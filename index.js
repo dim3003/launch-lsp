@@ -37,6 +37,26 @@ const { parseFixed } = require("@ethersproject/bignumber");
 //
 // Example deployment script:
 // node index.js --gasprice 80 --url YOUR_NODE_URL --mnemonic "your mnemonic (12 word seed phrase)" --pairName "UMA \$4-12 Range Token Pair August 2021" --expirationTimestamp 1630447200 --collateralPerPair 250000000000000000 --priceIdentifier UMAUSD --longSynthName "UMA \$4-12 Range Token August 2021" --longSynthSymbol rtUMA-0821 --shortSynthName "UMA \$4-12 Range Short Token August 2021" --shortSynthSymbol rtUMA-0821s --collateralToken 0x489Bf230d4Ab5c2083556E394a28276C22c3B580 --customAncillaryData "twapLength:3600" --fpl RangeBond --lowerBound 4000000000000000000 --upperBound 12000000000000000000 --proposerReward 20000000000000000000 --optimisticOracleProposerBond --40000000000000000000
+/* node index.js 
+--gasprice 20
+--url wss://kovan.infura.io/ws/v3/PROJECT_ID 
+--mnemonic "mnemonic seed 12 words" 
+--pairName "WHTUSDOct" 
+--expirationTimestamp 1663266000
+--collateralPerPair 1000000000 
+--priceIdentifier UMAUSD 
+--longSynthName "wheat_SRW_Oct_long" 
+--longSynthSymbol WHTUSDBOct
+--shortSynthName "wheat_SRW_Oct_short" 
+--shortSynthSymbol WHTUSDBOct
+--collateralToken 0x7079f3762805cff9c979a5bdc6f5648bcfee76c8 
+--fpl Linear 
+--lowerBound 0 
+--upperBound 2000000000 
+--proposerReward 2000000 
+--optimisticOracleProposerBond 200000000
+*/
+
 
 const argv = require("minimist")(process.argv.slice(), {
   string: [
@@ -168,7 +188,7 @@ const earlyExpiration = argv.enableEarlyExpiration ? argv.enableEarlyExpiration 
 
   // Transaction parameters
   const transactionOptions = {
-    gas: 10000000, // 10MM is very high. Set this lower if you only have < 2 ETH or so in your wallet.
+    gas: 1000000, // 10MM is very high. Set this lower if you only have < 2 ETH or so in your wallet.
     gasPrice: argv.gasprice * 1000000000, // gasprice arg * 1 GWEI
     from: account,
   };
